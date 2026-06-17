@@ -5,10 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/Jeffrie-04/homelab.git
-    targetRevision: HEAD
-    path: apps/immich
+  sources:
+    - repoURL: https://immich-app.github.io/immich-charts
+      chart: immich
+      targetRevision: 0.9.3
+      helm:
+        valueFiles:
+          - $values/apps/immich/values.yaml
+    - repoURL: https://github.com/Jeffrie-04/homelab.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: immich
