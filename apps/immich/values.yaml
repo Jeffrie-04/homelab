@@ -1,0 +1,20 @@
+image:
+  tag: release
+immich:
+  metrics:
+    enabled: true
+  persistence:
+    library:
+      existingClaim: immich-pvc
+
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        username: immich
+        database: immich
+        password: changeme123
+
+redis:
+  enabled: true
