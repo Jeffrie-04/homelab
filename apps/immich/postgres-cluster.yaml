@@ -15,7 +15,10 @@ spec:
       owner: immich
       secret:
         name: immich-postgres-secret
-      postInitSQL:
+      postInitApplicationSQL:
+        - CREATE EXTENSION IF NOT EXISTS vector CASCADE;
         - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+      postInitSQL:
+        - ALTER USER immich SUPERUSER;
   storage:
     size: 20Gi
