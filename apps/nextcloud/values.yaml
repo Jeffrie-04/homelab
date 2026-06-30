@@ -1,7 +1,7 @@
 nextcloud:
   host: 192.168.1.50
   username: admin
-  password: "114958701"
+  password: "114958701@"
   trustedDomains:
     - 192.168.1.50
 internalDatabase:
@@ -12,7 +12,7 @@ postgresql:
     postgresql:
       auth:
         username: nextcloud
-        password: "114958701"
+        password: "114958701@"
         database: nextcloud
   primary:
     persistence:
@@ -20,7 +20,7 @@ postgresql:
 redis:
   enabled: true
   auth:
-    password: "114958701"
+    password: "114958701@"
 persistence:
   enabled: true
   existingClaim: nextcloud-pvc
