@@ -4,8 +4,12 @@ nextcloud:
   password: "114958701@"
   trustedDomains:
     - 192.168.1.50
+  persistence:
+    subPath:
+
 internalDatabase:
   enabled: false
+
 postgresql:
   enabled: true
   global:
@@ -17,11 +21,22 @@ postgresql:
   primary:
     persistence:
       enabled: true
+
 redis:
   enabled: true
   auth:
     password: "114958701@"
+
 persistence:
   enabled: true
   existingClaim: nextcloud-pvc
   accessMode: ReadWriteMany
+
+livenessProbe:
+  enabled: false
+  initialDelaySeconds: 120
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 120
+  periodSeconds: 30
+  failureThreshold: 10
