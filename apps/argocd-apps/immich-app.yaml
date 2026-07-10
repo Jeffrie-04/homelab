@@ -16,7 +16,7 @@ spec:
               containers:
                 main:
                   image:
-                    tag: v3.0.1
+                    tag: v3.0.2
                   env:
                     IMMICH_HOST:
                       valueFrom:
