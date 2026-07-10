@@ -40,6 +40,13 @@ spec:
             enabled: true
           server:
             enabled: true
+            service:
+              main:
+                controller: main
+                type: LoadBalancer
+                ports:
+                  http:
+                    port: 2283
           machine-learning:
             enabled: false
     - repoURL: https://github.com/Jeffrie-04/homelab.git
