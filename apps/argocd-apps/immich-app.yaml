@@ -18,6 +18,10 @@ spec:
                   image:
                     tag: v3.0.1
                   env:
+          	    HOST:
+                      valueFrom:
+                        fieldRef:
+                          fieldPath: status.podIP
                     REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
                     IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
                     DB_HOSTNAME: "immich-postgres-rw"
