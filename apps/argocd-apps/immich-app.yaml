@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: ghcr.io/immich-app/immich-charts
     chart: immich
-    targetRevision: 0.11.0
+    targetRevision: 0.13.1
     helm:
       valuesObject:
         controllers:
@@ -16,13 +16,13 @@ spec:
             containers:
               main:
                 image:
-                  tag: v2.6.3
+                  tag: v3.0.3
                 env:
                   REDIS_HOSTNAME: 'immich-valkey'
                   IMMICH_MACHINE_LEARNING_URL: 'http://immich-machine-learning:3003'
                   DB_HOSTNAME: "immich-postgres-rw"
                   DB_USERNAME: "immich"
-                  DB_PASSWORD: "9ZvqA0mv3UZ1rO/GFkJhpSejz/YcBJa8"
+                  DB_PASSWORD: "changeme123"
                   DB_DATABASE_NAME: "immich"
         immich:
           persistence:
