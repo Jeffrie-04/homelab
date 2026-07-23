@@ -28,11 +28,12 @@ spec:
           persistence:
             library:
               existingClaim: immich-pvc
-        service:
-          type: LoadBalancer
-        valkey:
-          enabled: true
         server:
+          enabled: true
+          service:
+            main:
+              type: LoadBalancer
+        valkey:
           enabled: true
         machine-learning:
           enabled: false
