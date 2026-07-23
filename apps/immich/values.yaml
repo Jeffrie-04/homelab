@@ -1,0 +1,27 @@
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          tag: v2.6.3
+        env:
+          REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
+          IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+          DB_HOSTNAME: "immich-postgres-rw"
+          DB_USERNAME: "immich"
+          DB_PASSWORD: "9ZvqA0mv3UZ1rO/GFkJhpSejz/YcBJa8"
+          DB_DATABASE_NAME: "immich"
+
+immich:
+  persistence:
+    library:
+      existingClaim: immich-pvc
+
+valkey:
+  enabled: true
+
+server:
+  enabled: true
+
+machine-learning:
+  enabled: false
