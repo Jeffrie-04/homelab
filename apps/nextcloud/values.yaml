@@ -4,6 +4,10 @@ nextcloud:
   password: "114958701@"
   trustedDomains:
     - 192.168.1.50
+    - 192.168.1.51
+    - 192.168.1.52
+    - 192.168.1.53
+    - 10.42.0.0/16
   persistence:
     subPath:
 
