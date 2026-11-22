@@ -1,0 +1,17 @@
+# Secret scanning config, used by the pre-commit hook and the GitHub Action.
+[extend]
+useDefault = true
+
+# Default rules skip short/low-entropy passwords (e.g. digits + a symbol),
+# which is exactly what leaked here before. This rule catches any literal
+# value on a password field in YAML. Reference secrets instead.
+[[rules]]
+id = "yaml-plaintext-password"
+description = "Plaintext password in YAML. Use a SealedSecret + secretKeyRef/existingSecret"
+regex = '''(?i)(?:password|passwd)["']?[ \t]*:[ \t]*["']?([^\s"'{|>][^\s"']{3,})'''
+secretGroup = 1
+keywords = ["password", "passwd"]
+
+[allowlist]
+description = "SealedSecret ciphertext is encrypted to the cluster key and safe to commit"
+regexes = ['''^Ag[A-Za-z0-9+/]{100,}={0,2}$''', '''^REDACTED$''']

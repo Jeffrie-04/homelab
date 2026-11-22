@@ -1,0 +1,7 @@
+# Install once:  brew install pre-commit && pre-commit install
+# Blocks a commit locally if it contains a secret (uses .gitleaks.toml).
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.21.2
+    hooks:
+      - id: gitleaks

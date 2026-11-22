@@ -1,0 +1,14 @@
+# Plaintext secrets must never be committed. Seal them with kubeseal first.
+*.env
+.env*
+*secret*.unsealed.yaml
+*-plain.yaml
+kubeconfig*
+*.kubeconfig
+sealed-secrets-*.key
+*.pem
+
+# OS / editor noise
+.DS_Store
+.vscode/
+.idea/

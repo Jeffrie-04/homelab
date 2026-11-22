@@ -22,7 +22,13 @@ spec:
                   IMMICH_MACHINE_LEARNING_URL: 'http://immich-machine-learning:3003'
                   DB_HOSTNAME: "immich-postgres-rw"
                   DB_USERNAME: "immich"
-                  DB_PASSWORD: "REDACTED"
+                  # Read from the same secret CNPG bootstraps the DB with,
+                  # so app and database can never drift apart.
+                  DB_PASSWORD:
+                    valueFrom:
+                      secretKeyRef:
+                        name: immich-postgres-secret
+                        key: password
                   DB_DATABASE_NAME: "immich"
         immich:
           persistence:

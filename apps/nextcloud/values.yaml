@@ -1,7 +1,15 @@
+## All credentials live in the `nextcloud-credentials` SealedSecret
+## (apps/nextcloud/sealed-secret.yaml). Never put a password in this file.
+## Required keys: nextcloud-username, nextcloud-password, db-username,
+##                db-password, postgres-password, redis-password
+
 nextcloud:
   host: 192.168.1.50
-  username: admin
-  password: "REDACTED"
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-credentials
+    usernameKey: nextcloud-username
+    passwordKey: nextcloud-password
   trustedDomains:
     - 192.168.1.50
     - 192.168.1.51
@@ -14,14 +22,25 @@ nextcloud:
 internalDatabase:
   enabled: false
 
+# Nextcloud reads its DB credentials from here, even with the bundled PostgreSQL
+externalDatabase:
+  existingSecret:
+    enabled: true
+    secretName: nextcloud-credentials
+    usernameKey: db-username
+    passwordKey: db-password
+
 postgresql:
   enabled: true
   global:
     postgresql:
       auth:
         username: nextcloud
-        password: "REDACTED"
         database: nextcloud
+        existingSecret: nextcloud-credentials
+        secretKeys:
+          adminPasswordKey: postgres-password
+          userPasswordKey: db-password
   primary:
     persistence:
       enabled: true
@@ -29,7 +48,9 @@ postgresql:
 redis:
   enabled: true
   auth:
-    password: "REDACTED"
+    enabled: true
+    existingSecret: nextcloud-credentials
+    existingSecretPasswordKey: redis-password
 
 persistence:
   enabled: true
