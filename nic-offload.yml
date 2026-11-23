@@ -1,0 +1,72 @@
+---
+# Fix for the Intel I219-LM (e1000e) "Detected Hardware Unit Hang" bug:
+# disable TSO/GSO/GRO on the uplink, live AND persistently.
+# Validated as a canary on pve1 (zero hangs in 14 days while pve3/pve4 hung for ~10 days).
+#
+#   ansible-playbook nic-offload.yml --check --diff     # dry run: shows what would change
+#   ansible-playbook nic-offload.yml                    # apply, one host at a time
+#
+# Idempotent: hosts already fixed (pve1, pve3) report "ok", not "changed".
+
+- name: Disable NIC offloads on Proxmox nodes (e1000e hang fix)
+  hosts: pve
+  serial: 1                 # one node at a time: a link blip never hits two nodes at once
+  gather_facts: false
+  vars:
+    ethtool_line: "post-up /usr/sbin/ethtool -K {{ nic }} tso off gso off gro off"
+
+  tasks:
+    - name: Read current offload settings
+      ansible.builtin.command: "ethtool -k {{ nic }}"
+      register: before
+      changed_when: false
+      check_mode: false     # read-only, safe to run during --check
+
+    - name: Decide whether any offload is still on
+      ansible.builtin.set_fact:
+        offload_on: >-
+          {{ before.stdout is search('tcp-segmentation-offload: on')
+             or before.stdout is search('generic-segmentation-offload: on')
+             or before.stdout is search('generic-receive-offload: on') }}
+
+    - name: Report what the live step will do (command tasks can't be simulated in --check)
+      ansible.builtin.debug:
+        msg: >-
+          {{ inventory_hostname }}: offloads are
+          {{ 'ON → real run WILL disable them live (brief link blip)' if offload_on | bool
+             else 'already off → live step not needed' }}
+
+    - name: Disable offloads live (may blip the link for a second)
+      ansible.builtin.command: "ethtool -K {{ nic }} tso off gso off gro off"
+      when: offload_on | bool
+
+    - name: Wait for the node to be reachable again after the blip
+      ansible.builtin.wait_for_connection:
+        delay: 3
+        timeout: 60
+      when: offload_on | bool
+
+    - name: Persist the fix under the iface stanza (same line as pve1)
+      ansible.builtin.lineinfile:
+        path: /etc/network/interfaces
+        regexp: '^\s*post-up\s+.*ethtool -K {{ nic }} '
+        line: "\t{{ ethtool_line }}"
+        insertafter: '^iface {{ nic }} inet manual'
+        backup: true        # timestamped copy next to the file on every change
+
+    - name: Verify all three offloads are off
+      ansible.builtin.command: "ethtool -k {{ nic }}"
+      register: after
+      changed_when: false
+      check_mode: false
+
+    - name: Assert the fix is in effect
+      ansible.builtin.assert:
+        that:
+          # quoted: an unquoted ": " makes YAML parse each line as a mapping, not a string
+          - "after.stdout is search('tcp-segmentation-offload: off')"
+          - "after.stdout is search('generic-segmentation-offload: off')"
+          - "after.stdout is search('generic-receive-offload: off')"
+        success_msg: "{{ inventory_hostname }}: TSO/GSO/GRO off, fix persisted"
+        fail_msg: "{{ inventory_hostname }}: offloads still on — stopping rollout"
+      when: not ansible_check_mode

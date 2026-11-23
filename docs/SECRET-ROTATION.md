@@ -106,9 +106,8 @@ occ status
 Log in at :8080 with the new admin password. Phone and desktop clients may
 ask you to sign in again.
 
-If the rotation script warned that it generated a new Postgres superuser
-password, also run `ALTER USER postgres` as a superuser, or the secret won't
-match reality.
+The Postgres superuser password is reused from the existing chart secret
+(it was never committed), so it doesn't need changing in Postgres.
 
 ## 4. Ship the code + guardrails
 

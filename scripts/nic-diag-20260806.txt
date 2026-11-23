@@ -1,0 +1,152 @@
+==================================================
+  NODE: 192.168.1.10
+==================================================
+--- hostname ---
+pve1
+--- offload state (nic0) ---
+tcp-segmentation-offload: on
+generic-segmentation-offload: on
+generic-receive-offload: on
+--- EEE state (nic0) ---
+	EEE status: enabled - inactive
+	Advertised EEE link modes:  100baseT/Full
+	Link partner advertised EEE link modes:  Not reported
+--- persisted fix present in /etc/network/interfaces? ---
+(no ethtool/post-up lines found)
+--- e1000e hang / link events this boot ---
+Aug 06 20:12:08 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:10 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:12 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:14 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:16 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:18 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:20 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:22 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:24 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:26 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:28 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:30 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:32 pve1 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 06 20:12:33 pve1 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 06 20:12:36 pve1 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+--- rx error counters ---
+     rx_errors: 0
+     rx_crc_errors: 0
+     rx_missed_errors: 2036948
+     tx_timeout_count: 0
+     rx_long_length_errors: 0
+
+==================================================
+  NODE: 192.168.1.11
+==================================================
+--- hostname ---
+pve2
+--- offload state (nic0) ---
+tcp-segmentation-offload: on
+generic-segmentation-offload: on
+generic-receive-offload: on
+--- EEE state (nic0) ---
+	EEE status: enabled - inactive
+	Advertised EEE link modes:  100baseT/Full
+	Link partner advertised EEE link modes:  Not reported
+--- persisted fix present in /etc/network/interfaces? ---
+(no ethtool/post-up lines found)
+--- e1000e hang / link events this boot ---
+Jul 30 23:10:27 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:29 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:31 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:33 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:35 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:37 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:39 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:41 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:43 pve2 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Jul 30 23:10:45 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Jul 30 23:10:48 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+Aug 03 22:10:46 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 03 22:10:49 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+Aug 06 20:12:34 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 06 20:12:38 pve2 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+--- rx error counters ---
+     rx_errors: 0
+     rx_crc_errors: 0
+     rx_missed_errors: 410248
+     tx_timeout_count: 0
+     rx_long_length_errors: 0
+
+==================================================
+  NODE: 192.168.1.12
+==================================================
+--- hostname ---
+pve3
+--- offload state (nic0) ---
+tcp-segmentation-offload: on
+generic-segmentation-offload: on
+generic-receive-offload: on
+--- EEE state (nic0) ---
+	EEE status: enabled - inactive
+	Advertised EEE link modes:  100baseT/Full
+	Link partner advertised EEE link modes:  Not reported
+--- persisted fix present in /etc/network/interfaces? ---
+(no ethtool/post-up lines found)
+--- e1000e hang / link events this boot ---
+Aug 05 22:52:44 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:46 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:48 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:50 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:52 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:54 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:56 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:58 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:00 pve3 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:01 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 05 22:53:10 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Half Duplex, Flow Control: None
+Aug 05 22:53:10 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 05 22:53:14 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+Aug 06 20:12:31 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 06 20:12:34 pve3 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+--- rx error counters ---
+     rx_errors: 0
+     rx_crc_errors: 0
+     rx_missed_errors: 11622141
+     tx_timeout_count: 0
+     rx_long_length_errors: 0
+
+==================================================
+  NODE: 192.168.1.13
+==================================================
+--- hostname ---
+pve4
+--- offload state (nic0) ---
+tcp-segmentation-offload: on
+generic-segmentation-offload: on
+generic-receive-offload: on
+--- EEE state (nic0) ---
+	EEE status: enabled - inactive
+	Advertised EEE link modes:  100baseT/Full
+	Link partner advertised EEE link modes:  Not reported
+--- persisted fix present in /etc/network/interfaces? ---
+(no ethtool/post-up lines found)
+--- e1000e hang / link events this boot ---
+Aug 05 22:52:46 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:48 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:50 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:52 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:54 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:56 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:52:58 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:00 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:02 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:04 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:06 pve4 kernel: e1000e 0000:00:1f.6 nic0: Detected Hardware Unit Hang:
+Aug 05 22:53:08 pve4 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 05 22:53:12 pve4 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+Aug 06 20:12:30 pve4 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Down
+Aug 06 20:12:33 pve4 kernel: e1000e 0000:00:1f.6 nic0: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+--- rx error counters ---
+     rx_errors: 0
+     rx_crc_errors: 0
+     rx_missed_errors: 9140332
+     tx_timeout_count: 0
+     rx_long_length_errors: 0
+

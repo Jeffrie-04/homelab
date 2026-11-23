@@ -65,3 +65,8 @@ readinessProbe:
   initialDelaySeconds: 120
   periodSeconds: 30
   failureThreshold: 10
+
+# Previously set by hand (kubectl patch). Tracked here so Helm owns it.
+service:
+  type: LoadBalancer
+  port: 8080

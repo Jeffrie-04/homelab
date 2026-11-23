@@ -10,6 +10,7 @@ id = "yaml-plaintext-password"
 description = "Plaintext password in YAML. Use a SealedSecret + secretKeyRef/existingSecret"
 regex = '''(?i)(?:password|passwd)["']?[ \t]*:[ \t]*["']?([^\s"'{|>][^\s"']{3,})'''
 secretGroup = 1
+path = '''(?i)\.ya?ml$'''   # YAML only: avoids false hits like bash ${VAR_PASSWORD:-...}
 keywords = ["password", "passwd"]
 
 [allowlist]
